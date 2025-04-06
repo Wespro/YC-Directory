@@ -1,7 +1,9 @@
 import type { Config } from 'tailwindcss';
+import animate from 'tailwindcss-animate';
+import typography from '@tailwindcss/typography';
 
 const config: Config = {
-  darkMode: ['class', 'dark'],
+  darkMode: 'class',
   content: [
     './pages/**/*.{js,ts,jsx,tsx,mdx}',
     './components/**/*.{js,ts,jsx,tsx,mdx}',
@@ -31,7 +33,7 @@ const config: Config = {
         },
       },
       fontFamily: {
-        'work-sans': ['var(--font-work-sans)'],
+        'work-sans': ['var(--font-work-sans)', 'sans-serif'],
       },
       borderRadius: {
         lg: 'var(--radius)',
@@ -39,13 +41,13 @@ const config: Config = {
         sm: 'calc(var(--radius) - 4px)',
       },
       boxShadow: {
-        100: '2px 2px 0px 0px rgb(0, 0, 0)',
-        200: '2px 2px 0px 2px rgb(0, 0, 0)',
-        300: '2px 2px 0px 2px rgb(238, 43, 105)',
+        100: '2px 2px 0px 0px rgb(0 0 0)',
+        200: '2px 2px 0px 2px rgb(0 0 0)',
+        300: '2px 2px 0px 2px rgb(238 43 105)',
       },
     },
   },
-  plugins: [require('tailwindcss-animate'), require('@tailwindcss/typography')],
+  plugins: [animate, typography],
 };
 
 export default config;

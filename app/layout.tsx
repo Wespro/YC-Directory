@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { Geist, Geist_Mono } from 'next/font/google';
+
 import './globals.css';
 import localFont from 'next/font/local';
 
@@ -16,13 +16,14 @@ const workSans = localFont({
   ],
   variable: '--font-work-sans',
 });
+
 export const metadata: Metadata = {
   title: 'YC Directory Void',
   description: 'Pitch,Vote,And grow your startup',
 };
 
 export default function RootLayout({
-  children,
+  children
 }: Readonly<{
   children: React.ReactNode;
 }>) {
