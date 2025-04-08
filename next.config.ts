@@ -1,9 +1,9 @@
 import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
-  reactStrictMode: true,
   images: {
-    domains: ['example.com'],
+    dangerouslyAllowSVG: true,
+    remotePatterns: [{ protocol: 'https', hostname: '*' }],
   },
 };
 

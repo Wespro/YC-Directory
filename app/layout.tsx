@@ -3,7 +3,7 @@ import type { Metadata } from 'next';
 import './globals.css';
 import localFont from 'next/font/local';
 
-const workSans = localFont({
+export const workSans = localFont({
   src: [
     { path: './fonts/WorkSans-Black.ttf', weight: '900', style: 'normal' },
     { path: './fonts/WorkSans-ExtraBold.ttf', weight: '800', style: 'normal' },
@@ -23,7 +23,7 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({
-  children
+  children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
