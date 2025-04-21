@@ -1,9 +1,10 @@
 import type { Metadata } from 'next';
-
 import './globals.css';
 import localFont from 'next/font/local';
+import 'easymde/dist/easymde.min.css';
+import { Toaster } from '@/components/ui/sonner';
 
-export const workSans = localFont({
+const workSans = localFont({
   src: [
     { path: './fonts/WorkSans-Black.ttf', weight: '900', style: 'normal' },
     { path: './fonts/WorkSans-ExtraBold.ttf', weight: '800', style: 'normal' },
@@ -20,6 +21,11 @@ export const workSans = localFont({
 export const metadata: Metadata = {
   title: 'YC Directory Void',
   description: 'Pitch,Vote,And grow your startup',
+
+  other: {
+    google: 'notranslate',
+    robots: 'noform',
+  },
 };
 
 export default function RootLayout({
@@ -28,8 +34,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang='en'>
-      <body className={workSans.variable}>{children}</body>
+    <html lang='en' suppressHydrationWarning>
+      <body className={workSans.variable} suppressHydrationWarning>
+        {children}
+        <Toaster />
+      </body>
     </html>
   );
 }

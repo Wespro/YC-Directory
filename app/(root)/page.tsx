@@ -1,6 +1,9 @@
-import Image from 'next/image';
 import SearchForm from '../../components/SearchForm';
-import StartupCard from '@/components/StartupCard';
+import StartupCard, { StartupCardType } from '@/components/StartupCard';
+import { STARTUPS_QUERY } from '@/sanity/lib/queries';
+
+import { sanityFetch, SanityLive } from '@/sanity/lib/live';
+import { auth } from '@/auth';
 
 export default async function Home({
   searchParams,
@@ -8,19 +11,13 @@ export default async function Home({
   searchParams: Promise<{ query?: string }>;
 }) {
   const query = (await searchParams).query;
-  const posts = [
-    {
-      _createdAt: new Date(),
-      views: 55,
-      author: { _id: 1, name: 'John Doe' },
-      _id: 1,
-      description: 'This is a description',
-      image:
-        'https://images.pexels.com/photos/31459238/pexels-photo-31459238/free-photo-of-serene-park-scene-with-golden-autumn-foliage.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-      category: 'Robots',
-      title: 'We Robots',
-    },
-  ];
+  const params = { search: query || null };
+
+  const session = await auth();
+  console.log(session?.id);
+
+  const { data: posts } = await sanityFetch({ query: STARTUPS_QUERY, params });
+
   return (
     <>
       <section className=' pink_container'>
@@ -42,13 +39,14 @@ export default async function Home({
         <ul className='mt-7 card_grid'>
           {posts?.length ? (
             posts.map((post: StartupCardType) => (
-              <StartupCard key={post?.id} post={post} />
+              <StartupCard key={post?._id} post={post} />
             ))
           ) : (
             <p className='no-results'>No results startup found..</p>
           )}
         </ul>
       </section>
+      <SanityLive />
     </>
   );
 }
