@@ -12,6 +12,9 @@
     "typegen": "sanity schema extract --path=./sanity/extract.json && sanity typegen generate"
   },
   "packageManager": "npm@11.3.0",
+  "resolutions": {
+    "next": "15.4.0-canary.2"
+  },
   "dependencies": {
     "@radix-ui/react-avatar": "^1.1.6",
     "@radix-ui/react-slot": "^1.1.2",
