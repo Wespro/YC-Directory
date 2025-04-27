@@ -10,7 +10,7 @@
     "predev": "npm run typegen",
     "prebuild": "npm run typegen",
     "typegen": "sanity schema extract --path=./sanity/extract.json && sanity typegen generate",
-    "install": "npm install --force"
+    "install": "npm install --legacy-peer-deps"
   },
   "packageManager": "npm@11.3.0",
   "resolutions": {
